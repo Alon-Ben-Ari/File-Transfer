@@ -11,7 +11,7 @@
 #define BUFFER_SIZE 1024
 #define PORT 49152
 
-/* --- ARGUMENTS DECLARATIONS ---  */
+/* --- DECLARATIONS ---  */
 
 //extern in errno = 0;
 
