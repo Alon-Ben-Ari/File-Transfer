@@ -1,55 +1,7 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <sys/socket.h>
-#include <netinet/in.h>
-#include <arpa/inet.h>
-#include <unistd.h>
-
-
-
-/* --- DECLARATIONS ---  */
-
-#define SERVER_IP "127.0.0.1"
-#define PORT 49152
-
-
-void initSocket(int* SocketFD, struct sockaddr_in *ServAddr);
-
-
-/*  --- END OF DECLARATIONS  ---  */
+#include client.h
 
 
 int main() {
-    /*
-    int clientSocket;
-    char message[] = "Hi there you Server!\n";
-    struct sockaddr_in serverAddr;
-
-    // Create a socket
-    clientSocket = socket(AF_INET, SOCK_STREAM, 0);
-    if (clientSocket < 0) {
-        perror("Socket creation failed");
-        exit(1);
-    }
-
-    // Set up the server address
-    serverAddr.sin_family = AF_INET;
-    serverAddr.sin_port = htons(PORT);
-    serverAddr.sin_addr.s_addr = inet_addr(SERVER_IP);
-
-    // Connect to the server
-    if (connect(clientSocket, (struct sockaddr*)&serverAddr, sizeof(serverAddr)) < 0) {
-        perror("Connection failed");
-        exit(1);
-    }
-
-    // Send a message to the server
-    send(clientSocket, message, sizeof(message) , 0);
-
-    // Close the client socket
-    pclose(clientSocket);
-    */
     
     int ClientSock;
     char message[] = "Hi there you Server!\n";
