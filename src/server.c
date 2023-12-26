@@ -1,11 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <sys/socket.h>
-//#include <string.h>
 #include <unistd.h>
 #include <netinet/in.h>
-//#include <netinet/tcp.h>
-//#include <arpa/inet.h>
 #include <errno.h>
 
 #define BUFFER_SIZE 1024
@@ -31,7 +28,6 @@ char buffer[BUFFER_SIZE];
 initSocket(&ServerSocket, &NewSocket);
 receive(&NewSocket, buffer); 
 printf("%.*s\n", 20, buffer);
-//printf("%s\n", buffer);
 
 CloseSocket(&ServerSocket);
 CloseSocket(&NewSocket);
@@ -43,7 +39,8 @@ return 0;
 /* --- FUNCTIONS DEFINITIONS --- */
 
 void initSocket(int* SocketFD, int* NewSocketFD) {
-    
+    // Initialize the server socket and accept a client connection
+
     *SocketFD = socket(AF_INET, SOCK_STREAM, 0);
     if (*SocketFD < 0) {
         perror("Binding Failed");
@@ -87,6 +84,8 @@ void initSocket(int* SocketFD, int* NewSocketFD) {
 
 
 void CloseSocket(int* SocketFD) {
+    // Close the given socket
+
     if (close(*SocketFD) < 0) {
         perror("Failed to close Socket");
     }
@@ -94,6 +93,8 @@ void CloseSocket(int* SocketFD) {
 
 
 void receive(int* NewSocketFD, char* buffer) {
+    // Receive a message from the client
+
     int RecvResult = recv(*NewSocketFD, buffer, BUFFER_SIZE, 0);
 
     if (RecvResult < 0) {
